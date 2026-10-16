@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a18">
+  <title>A little secret for you ✦</title>
+  <style>
+    :root { color-scheme: dark; --ink:#f8f4ff; --muted:#b9b4d2; --pink:#ff9acb; --violet:#b7a2ff; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; min-height:100svh; color:var(--ink); overflow-x:hidden;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(ellipse at 15% 15%, #30204f 0, transparent 36%),
+        radial-gradient(ellipse at 85% 70%, #341b45 0, transparent 34%),
+        linear-gradient(145deg,#070916,#111329 55%,#080a18);
+    }
+    body:before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.6;
+      background-image:radial-gradient(1px 1px at 12% 24%,#fff 98%,transparent),radial-gradient(2px 2px at 76% 17%,#fff 98%,transparent),radial-gradient(1px 1px at 61% 58%,#fff 98%,transparent),radial-gradient(1px 1px at 29% 76%,#fff 98%,transparent),radial-gradient(2px 2px at 90% 88%,#fff 98%,transparent),radial-gradient(1px 1px at 43% 10%,#fff 98%,transparent);
+      background-size:330px 300px; }
+    .wrap { position:relative; width:min(100% - 32px,720px); margin:0 auto; min-height:100svh; display:grid; place-items:center; padding:36px 0; }
+    .card { width:100%; text-align:center; padding:clamp(26px,6vw,58px) clamp(20px,6vw,58px); border:1px solid #ffffff24; border-radius:28px; background:linear-gradient(150deg,#ffffff0c,#ffffff04); box-shadow:0 24px 100px #0006; backdrop-filter:blur(10px); }
+    .eyebrow { color:var(--pink); text-transform:uppercase; letter-spacing:.22em; font:600 11px/1.5 system-ui,sans-serif; }
+    .moon { font-size:42px; margin:10px 0 18px; filter:drop-shadow(0 0 18px #c9a7ff88); }
+    h1 { font-weight:400; line-height:1.12; font-size:clamp(2.25rem,8vw,4.4rem); margin:12px 0 18px; letter-spacing:-.035em; }
+    h1 em { color:var(--pink); font-weight:400; }
+    p { color:var(--muted); font:400 15px/1.8 system-ui,sans-serif; }
+    .inputrow { display:flex; gap:9px; margin:25px auto 0; max-width:390px; }
+    input { min-width:0; flex:1; padding:14px 15px; border:1px solid #ffffff30; border-radius:12px; color:white; background:#ffffff0b; outline:none; font:14px system-ui,sans-serif; }
+    input:focus { border-color:var(--pink); }
+    button { border:0; border-radius:12px; padding:14px 19px; color:#24132b; background:linear-gradient(120deg,#ffc1df,#c9baff); font:700 13px system-ui,sans-serif; cursor:pointer; transition:transform .2s,filter .2s; }
+    button:hover { transform:translateY(-1px); filter:brightness(1.06); }
+    .hint { font-size:12px; margin-top:13px; }
+    .error { color:#ffb5c7; min-height:22px; font-size:13px; }
+    .hidden { display:none !important; }
+    .divider { width:64px; height:1px; background:linear-gradient(90deg,transparent,#ff9acb,transparent); margin:26px auto; }
+    .message { color:#fff0f8; font-size:clamp(1.35rem,4vw,2rem); line-height:1.55; font-style:italic; margin:24px auto; max-width:540px; }
+    .musicbox { margin:26px auto 0; max-width:440px; border:1px solid #ffffff22; border-radius:18px; padding:18px; background:#07091666; }
+    .music-title { font:600 11px system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--pink); }
+    audio { display:block; width:100%; margin-top:13px; }
+    .footer { margin-top:28px; font:11px system-ui,sans-serif; letter-spacing:.08em; color:#a6a0c2; }
+    .heart { display:inline-block; color:var(--pink); animation:pulse 1.7s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform:scale(1.18); text-shadow:0 0 20px #ff9acb88; } }
+    @media(max-width:420px) { .inputrow { flex-direction:column; } .inputrow button { width:100%; } .card { border-radius:22px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" aria-live="polite">
+      <div class="eyebrow">A tiny corner of the universe</div>
+      <div class="moon" aria-hidden="true">☾ ✦</div>
+      <section id="gate">
+        <h1>Something special<br><em>is waiting for you.</em></h1>
+        <p>Made with a full heart, just for one person.<br>Enter the secret word to open it.</p>
+        <form id="unlock-form">
+          <div class="inputrow">
+            <input id="passcode" type="password" placeholder="Your secret passcode" aria-label="Secret passcode" autocomplete="off" required>
+            <button type="submit">Unlock the secret ✦</button>
+          </div>
+        </form>
+        <p id="error" class="error" role="status"></p>
+        <p class="hint">A little surprise, made only for you.</p>
+      </section>
+      <section id="reveal" class="hidden">
+        <div class="eyebrow">October 19 · A special day for my special lady</div>
+        <h1>Happy Birthday,<br><em>my dearest bunny.</em></h1>
+        <p>Tonight, the stars can wait a little love.<br>The world is yours.</p>
+        <div class="divider"></div>
+        <p class="message">“dear Toshita, being loved by you was the best thing that has ever happened to me.”</p>
+        <div class="musicbox">
+          <div class="music-title">A song from my heart to yours</div>
+          <p style="margin:8px 0 0;font-size:13px">Put your headphones on, take a breath, and hit play.</p>
+          <audio id="song" controls preload="metadata">
+            <source src="19th-final.mp3" type="audio/mpeg">
+            Your browser does not support audio playback.
+          </audio>
+        </div>
+        <p style="margin-top:28px">I hope this year is gentle with you just the way you are with my heart,<br>and gives you a hundred reasons to smile.</p>
+        <div class="footer">MADE WITH <span class="heart">♥</span> JUST FOR YOU, BY YOURS TRULY</div>
+      </section>
+    </section>
+  </main>
+  <script>
+    // Change this before publishing. This front-end gate is a sweet surprise, not strong security.
+    const SECRET_PASSCODE = "1910";
+    const form = document.getElementById("unlock-form");
+    const input = document.getElementById("passcode");
+    const error = document.getElementById("error");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (input.value.trim() === SECRET_PASSCODE) {
+        document.getElementById("gate").classList.add("hidden");
+        document.getElementById("reveal").classList.remove("hidden");
+        error.textContent = "";
+      } else {
+        error.textContent = "Not quite, my love. Try your special code again.";
+        input.select();
+      }
+    });
+  </script>
+</body>
+</html>
